@@ -1,3 +1,4 @@
+
         :root {
             --primary: #6c5ce7;
             --secondary: #00cec9;
@@ -14,7 +15,6 @@
             scroll-behavior: smooth;
         }
 
-        
         /* Preloader */
         #preloader {
             position: fixed;
@@ -502,16 +502,109 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* New 3D project cards */
-        .project-card-3d {
+        /* Project Cards - Fixed Styles */
+        .project-card {
+            position: relative;
+            overflow: hidden;
             transform-style: preserve-3d;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             perspective: 1000px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-card-3d:hover {
+        .project-card-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.1);
+        }
+
+        .project-card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            border-top: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .project-card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-card-description {
+            color: rgba(248, 250, 252, 0.8);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .project-card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(108, 92, 231, 0.2);
+            color: var(--light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+
+        .project-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-card:hover {
             transform: translateY(-10px) rotateX(5deg);
             box-shadow: 0 20px 40px rgba(108, 92, 231, 0.5);
+        }
+
+        .project-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-card-overlay {
+            opacity: 1;
         }
 
         /* Console terminal */
@@ -797,4 +890,71 @@
 
         body.light-theme .terminal {
             background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .lg\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px;
+            }
         }
